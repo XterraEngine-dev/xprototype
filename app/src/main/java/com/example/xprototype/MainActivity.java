@@ -41,24 +41,21 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.imageView);
 
 
-        String text="SE1900007465H0001"; // Whatever you need to encode in the QR code
+        String text = "SE1900007465H0001"; // Whatever you need to encode in the QR code
         MultiFormatWriter multiFormatWriter =
                 new MultiFormatWriter();
         try {
             BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.
-                    CODE_128,800,200);
+                    CODE_128, 800, 200);
             BarcodeEncoder barcodeEncoder =
                     new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
 
             imageView.setImageBitmap(bitmap);
-        }
-        catch (WriterException e) {
+        } catch (WriterException e) {
             e.printStackTrace();
         }
     }
-
-
 
 
     public void SaveClick(View view) {
@@ -68,12 +65,13 @@ public class MainActivity extends AppCompatActivity {
         File file = saveBitMap(MainActivity.this, savingLayout);
         if (file != null) {
             pd.cancel();
-            Log.i("TAG", "Drawing saved to the gallery!");
+            Log.i("AZAZELXT", "Drawing saved to the gallery!");
         } else {
             pd.cancel();
-            Log.e("TAG", "Oops! Image could not be saved.");
+            Log.e("AZAZELXT", "Oops! Image could not be saved.");
         }
     }
+
     public Bitmap rotateBitmap(Bitmap original, float degrees) {
         Matrix matrix = new Matrix();
         matrix.preRotate(degrees);
@@ -92,20 +90,11 @@ public class MainActivity extends AppCompatActivity {
         }
         String filename = pictureFileDir.getPath() + File.separator + System.currentTimeMillis() + ".jpg";
         File pictureFile = new File(filename);
-        Bitmap s= getBitmapFromView(drawView);
-        Bitmap bitmap = rotateBitmap(s,-90);
-
-
+        Bitmap s = getBitmapFromView(drawView);
+        Bitmap bitmap = rotateBitmap(s, -90);
         try {
-
-
-
             pictureFile.createNewFile();
             FileOutputStream oStream = new FileOutputStream(pictureFile);
-
-
-
-
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, oStream);
             oStream.flush();
             oStream.close();
@@ -144,11 +133,12 @@ public class MainActivity extends AppCompatActivity {
         try {
             MediaScannerConnection.scanFile(cntx, new String[]{path}, null, new MediaScannerConnection.OnScanCompletedListener() {
                 public void onScanCompleted(String path, Uri uri) {
+                    Log.i("AZAZELXT", "URI: " + uri + " PATH: " + path);
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
-            Log.i("TAG", "There was an issue scanning gallery.");
+            Log.i("AZAZELXT", "" + e);
         }
     }
 }
