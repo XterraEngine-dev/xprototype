@@ -6,10 +6,16 @@ public class ViewGenerator {
 
     private static final String TAG = "XBIXOLON";
 
-    public static String test(String test) {
-        Log.d(TAG, "test: " + test);
-        return test;
+
+    public void imageparameters(String idguia, String departamentInicial, String depDescriptionInicial, String departamentFinish, String depDescriptionFinish) {
+
+        Log.d(TAG,
+                "\nimageparameters: "
+                        + "\nidguia: " + idguia
+                        + "\ndepartamentInicial: " + departamentInicial
+                        + "\ndepDescriptionInicial: " + depDescriptionInicial
+                        + "\ndepartamentFinish: " + departamentFinish
+                        + "\ndepDescriptionFinish: " + depDescriptionFinish);
+
     }
-
-
 }

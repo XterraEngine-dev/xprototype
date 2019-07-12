@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.almo.xbixolon.ViewGenerator;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (WriterException e) {
             e.printStackTrace();
         }
+
+        new ViewGenerator().imageparameters("a","b","c","d","e");
     }
 
 
@@ -141,4 +144,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i("AZAZELXT", "" + e);
         }
     }
+
+
+
 }
